@@ -17,9 +17,7 @@ export const useGameManager = (
   const [matchup, setMatchup] = useState<[Choice, Choice] | null>(null);
 
   const playRound = () => {
-    // Clear previous errors
     setError(null);
-    // اگر هیچ شرطی انتخاب نشده باشد، پیام خطا تنظیم می‌شود
     if (bets.length === 0) {
       setError("Please select at least one position.");
       return;

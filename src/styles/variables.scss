@@ -1,5 +1,5 @@
-/* src/styles/variables.scss */
 
+//General Colors
 $primary-color: #bfa275;
 $win-color: #16c359;
 $lose-color: #ff0000;
@@ -9,8 +9,10 @@ $border-color: #ffd700;
 $header-background: #161616;
 $action-button-background: #070707;
 
+//Root
 $body-gradient: linear-gradient(180deg, #444 0%, #000 100%);
 
+//Board
 $chip-bg: #fff;
 $chip-border: #225eff;
 $chip-text: #000000;

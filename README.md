@@ -21,7 +21,18 @@ This project is a React application built using TypeScript with strict typing. I
   - The player cannot bet if their balance is less than the available bet amount.
 
 
+## Development Notes
 
+- **TypeScript:** The project is built with strict typing to minimize runtime errors.
+- **Modular Structure:** Code is organized into distinct layers:
+  - **Domain Layer:** Contains models, constants, and services. *JSDoc comments have been used to document these files, making the business logic more readable and easier to understand for future maintenance and development.*
+  - **Store Layer:** Manages state via React Context and custom hooks.
+  - **Presentation Layer:** Consists of modular React components, each with its own SCSS module for styling.
+- **SCSS Modules:** Component-specific styling is handled using SCSS modules, while shared variables and global styles are maintained in `global.scss` and `variables.scss`.
+- **Error Handling:** The game provides user feedback when invalid actions are performed (e.g., trying to play without selecting a position).
+- **Extensibility:** The project is designed for easy scalability and maintenance. Future changes in game specifications or even switching to another framework (e.g., Vue) would require minimal code adjustments.
+
+---
 
 ## Quick Start
 
