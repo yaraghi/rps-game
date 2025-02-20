@@ -20,18 +20,6 @@ This project is a React application built using TypeScript with strict typing. I
   - If the player loses, the bet is not returned.
   - The player cannot bet if their balance is less than the available bet amount.
 
-
-## Development Notes
-
-- **TypeScript:** The project is built with strict typing to minimize runtime errors.
-- **Modular Structure:** Code is organized into distinct layers:
-  - **Domain Layer:** Contains models, constants, and services. *JSDoc comments have been used to document these files, making the business logic more readable and easier to understand for future maintenance and development.*
-  - **Store Layer:** Manages state via React Context and custom hooks.
-  - **Presentation Layer:** Consists of modular React components, each with its own SCSS module for styling.
-- **SCSS Modules:** Component-specific styling is handled using SCSS modules, while shared variables and global styles are maintained in `global.scss` and `variables.scss`.
-- **Error Handling:** The game provides user feedback when invalid actions are performed (e.g., trying to play without selecting a position).
-- **Extensibility:** The project is designed for easy scalability and maintenance. Future changes in game specifications or even switching to another framework (e.g., Vue) would require minimal code adjustments.
-
 ---
 
 ## Quick Start
@@ -53,25 +41,65 @@ This project is a React application built using TypeScript with strict typing. I
    npm run preview
 
 
+---
+
+
 ## Development Notes
 
-- **TypeScript:** The project is built with strict typing to minimize runtime errors.
-- **Modular Structure:** Code is organized into domain (models and services), store (state management), and components (UI) directories.
-- **SCSS Modules:** Component-specific styling is handled using SCSS modules, while shared variables and global styles are managed in `global.scss` and `variables.scss`.
-- **Extensibility:** The project is designed to be flexible and maintainable. Changes in game specifications or even a switch to another framework (e.g., Vue) should require minimal code adjustments.
+- **TypeScript:**  
+  The project is built using TypeScript with strict typing enabled to minimize runtime errors.
 
-## Future Enhancements
+- **Modular Structure:**  
+  The code is organized into distinct layers to separate concerns and make the application easier to maintain and extend:
 
-- Add unit and integration tests for core functionalities (game logic, betting management, and state management).
-- Improve the UI based on provided mockups.
-- Extend betting features or add new functionality based on user feedback.
+  - **Domain Layer:**  
+    This layer contains the core business logic of the application.  
+    - **Models:**  
+      - `src/domain/models/Bet.ts` – Defines the structure of a bet (including the bet choice and amount).  
+      - `src/domain/models/Choice.ts` – Defines an enum for the available game choices (ROCK, PAPER, SCISSORS).  
+    - **Constants:**  
+      - `src/domain/constants.ts` – Contains game constants such as the initial balance, bet amount, betting limits, and winning multipliers.
+    - **Services:**  
+      - `src/domain/services/GameService.ts` – Manages betting operations such as validating, placing, and removing bets.  
+      - `src/domain/services/RpsGameEngine.ts` – Handles the game logic by generating a random choice for the computer, determining outcomes (win, tie, or loss), and computing the final result based on the bets.
 
-## Final Overview
+    *JSDoc comments have been used throughout the domain layer to document models, constants, and services, making the business logic more readable and easier to understand for future maintenance and development.*
 
-In this project, I developed a React application using TypeScript with strict typing, implementing a Rock-Paper-Scissors game with betting functionality. The game starts with a balance of 5000, and each bet costs 500. A player can place bets on up to two positions per game. The winning multipliers are set to 14x for a single bet and 3x for double bets. The game rules ensure that only one bet wins per round; if there is a tie (i.e., the player's choice matches the computer's choice), the bet amount is returned, and a tie is treated as a loss in terms of winning a multiplier.
+  - **Store Layer:**  
+    This layer manages the application state using React Context and custom hooks.
+    - **Game Context:**  
+      - `src/store/GameContext.tsx` – Provides a global context for sharing game state (such as the player's balance, bets, errors, game results, etc.) across the application.
+    - **Custom Hooks:**  
+      - `src/store/useBetManager.ts` – Handles all betting-related state changes, including placing and removing bets as well as updating the player's balance.
+      - `src/store/useGameManager.ts` – Manages the game round by generating the computer's choice, determining the outcome, computing the results, and handling error messages (for example, when no bet is selected).
 
-The project is structured into distinct layers:
-- **Domain Layer:** Contains the business logic, including models (Bet and Choice), constants, and services (GameService and RpsGameEngine) that handle the core game mechanics.
-- **Store Layer:** Manages application state through React Context and custom hooks (useBetManager and useGameManager), which handle betting operations, balance updates, and game round management.
-- **Presentation Layer:** Comprises modular UI components (Header, BettingBoard, PositionItem, ResultView) that utilize SCSS modules for styling, with shared styles and variables maintained in the global styles folder.
+  - **Presentation Layer:**  
+    This layer consists of modular React components responsible for the user interface and interactions.
+    - **Header Component:**  
+      - `src/components/Header/Header.tsx` – Displays the player's balance, total bet amount, and last win.  
+      - `src/components/Header/Header.module.scss` – Contains SCSS styling specific to the Header component.
+    - **BettingBoard Component:**  
+      - `src/components/BettingBoard/BettingBoard.tsx` – Main component that allows the player to place bets and initiate the game round.  
+      - `src/components/BettingBoard/BettingBoard.module.scss` – Provides styling for the BettingBoard component.
+    - **Positions Components:**  
+      - `src/components/Positions/PositionItem.tsx` – Represents an individual betting position (Rock, Paper, or Scissors).  
+      - `src/components/Positions/PositionItem.module.scss` – Contains styles for the PositionItem component.
+    - **Result Component:**  
+      - `src/components/Result/ResultView.tsx` – Displays the outcome of the game round, such as win, loss, or tie.  
+      - `src/components/Result/ResultView.module.scss` – Provides styling for the ResultView component.
 
+- **SCSS Modules:**  
+  Component-specific styling is managed using SCSS modules, which ensure that styles are scoped locally. Shared variables and global styles are maintained in:
+  - `src/styles/variables.scss` – Contains design tokens like colors, fonts, etc.
+  - `src/styles/global.scss` – Contains global styles applied across the entire application.
+
+- **Error Handling:**  
+  The application provides user feedback for invalid actions (e.g., attempting to play the game without selecting any betting position) to ensure a smooth user experience.
+
+- **Extensibility:**  
+  The project is designed for scalability and maintainability. The modular architecture makes it straightforward to:
+  - Extend game features (such as adding new betting options or changing the game rules).
+  - Modify or enhance UI components without affecting the underlying business logic.
+  - Potentially switch to another framework (e.g., Vue) with minimal code adjustments.
+
+---
