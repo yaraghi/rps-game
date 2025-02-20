@@ -54,3 +54,13 @@ This project is a React application built using TypeScript with strict typing. I
 - Add unit and integration tests for core functionalities (game logic, betting management, and state management).
 - Improve the UI based on provided mockups.
 - Extend betting features or add new functionality based on user feedback.
+
+## Final Overview
+
+In this project, I developed a React application using TypeScript with strict typing, implementing a Rock-Paper-Scissors game with betting functionality. The game starts with a balance of 5000, and each bet costs 500. A player can place bets on up to two positions per game. The winning multipliers are set to 14x for a single bet and 3x for double bets. The game rules ensure that only one bet wins per round; if there is a tie (i.e., the player's choice matches the computer's choice), the bet amount is returned, and a tie is treated as a loss in terms of winning a multiplier.
+
+The project is structured into distinct layers:
+- **Domain Layer:** Contains the business logic, including models (Bet and Choice), constants, and services (GameService and RpsGameEngine) that handle the core game mechanics.
+- **Store Layer:** Manages application state through React Context and custom hooks (useBetManager and useGameManager), which handle betting operations, balance updates, and game round management.
+- **Presentation Layer:** Comprises modular UI components (Header, BettingBoard, PositionItem, ResultView) that utilize SCSS modules for styling, with shared styles and variables maintained in the global styles folder.
+
