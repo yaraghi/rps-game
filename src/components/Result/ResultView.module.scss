@@ -1,0 +1,24 @@
+@use "../../styles/variables" as *;
+
+.result {
+  text-align: center;
+  font-size: 30px;
+  h4 {
+    color: #fff;
+    span {
+      color: $primary-color;
+    }
+  }
+}
+
+.win {
+  color: $win-color;
+}
+
+.lose {
+  color: $lose-color;
+}
+
+.tie {
+  color: $tie-color;
+}

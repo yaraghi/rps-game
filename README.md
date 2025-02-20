@@ -20,62 +20,26 @@ This project is a React application built using TypeScript with strict typing. I
   - If the player loses, the bet is not returned.
   - The player cannot bet if their balance is less than the available bet amount.
 
-## Project Structure
-
-rps-game/
-├── node_modules/
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-├── public/
-│   └── index.html
-└── src/
-    ├── App.tsx
-    ├── main.tsx
-    ├── domain/
-    │   ├── constants.ts
-    │   ├── models/
-    │   │   ├── Bet.ts
-    │   │   └── Choice.ts
-    │   └── services/
-    │       ├── GameService.ts
-    │       └── RpsGameEngine.ts
-    ├── store/
-    │   ├── GameContext.tsx
-    │   ├── useBetManager.ts
-    │   └── useGameManager.ts
-    ├── components/
-    │   ├── Header/
-    │   │   ├── Header.tsx
-    │   │   └── Header.module.scss
-    │   ├── BettingBoard/
-    │   │   ├── BettingBoard.tsx
-    │   │   └── BettingBoard.module.scss
-    │   ├── Positions/
-    │   │   ├── PositionItem.tsx
-    │   │   └── PositionItem.module.scss
-    │   └── Result/
-    │       ├── ResultView.tsx
-    │       └── ResultView.module.scss
-    └── styles/
-        ├── global.scss
-        └── variables.scss
 
 
 
-## Installation and Running the App
+## Quick Start
 
-1. **Install dependencies:**
-npm install
+1. **Clone the repository:**
+   git clone https://github.com/yaraghi/rps-game.git
+   cd rps-game
 
-2. **Run in development mode:**
-npm run dev
+2. **Install dependencies:**
+   npm install
 
-3. **Build the project:**
-npm run build
+3. **Run in development mode:**
+   npm run dev
 
-4. **Preview the built app:**
-npm run preview
+4. **Build the project:**
+   npm run build
+
+5. **Preview the built app:**
+   npm run preview
 
 
 ## Development Notes
