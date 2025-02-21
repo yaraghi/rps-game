@@ -13,21 +13,25 @@ export const useBetManager = (initialBalance: number) => {
 
   const placeBet = (choice: Choice) => {
     setError(null);
-    const validationError = gameService.canPlaceBet(bets, choice, balance);
-    if (validationError) {
-      setError(validationError);
-      return;
-    }
-    setBets(gameService.placeBet(bets, choice));
-    setBalance((prev) => prev - BET_AMOUNT);
+    setBets(prevBets => {
+      const validationError = gameService.canPlaceBet(prevBets, choice, balance);
+      if (validationError) {
+        setError(validationError);
+        return prevBets;
+      }
+      setBalance(prevBalance => prevBalance - BET_AMOUNT);
+      return gameService.placeBet(prevBets, choice);
+    });
   };
 
   const removeBet = (choice: Choice) => {
     try {
       setError(null);
-      const { newBets, returnedAmount } = gameService.removeBet(bets, choice);
-      setBets(newBets);
-      setBalance((prev) => prev + returnedAmount);
+      setBets(prevBets => {
+        const { newBets, returnedAmount } = gameService.removeBet(prevBets, choice);
+        setBalance(prevBalance => prevBalance + returnedAmount);
+        return newBets;
+      });
     } catch (err: any) {
       setError(err.message);
     }

@@ -54,9 +54,9 @@ export const useGameManager = (
           : "It's a Tie!";
 
       if (status === BetStatus.WIN) {
-        setBalance((prev) => prev + totalWin);
+        setBalance(prev => prev + totalWin);
       } else if (status === BetStatus.TIE) {
-        setBalance((prev) => prev + bets.reduce((sum, b) => sum + b.amount, 0));
+        setBalance(prev => prev + bets.reduce((sum, b) => sum + b.amount, 0));
       }
 
       setResult({ status, amount: totalWin, message });

@@ -26,7 +26,7 @@ interface GameState {
   clearRound: () => void;
 }
 
-const GameContext = createContext<GameState | undefined>(undefined);
+export const GameContext = createContext<GameState | undefined>(undefined);
 
 export const GameProvider = ({ children }: { children: ReactNode }) => {
   const { balance, bets, error, placeBet, removeBet, setBalance, setBets, setError } = useBetManager(INITIAL_BALANCE);

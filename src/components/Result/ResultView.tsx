@@ -32,7 +32,7 @@ export const ResultView: React.FC = () => {
           <h4>You Lost</h4>
         </>
       ) : (
-        <h2>No win/loss on tie.</h2>
+        <h2>loss on tie.</h2>
       )}
     </div>
   );
